@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MecHub | Expert Doorstep Car & Bike Servicing</title>
+  <meta name="description" content="Expert doorstep car and bike servicing, right at your doorstep. Professional-grade vehicle maintenance, certified mechanics, and transparent pricing. Download the app today!"/>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet"/>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lottie Animation Player -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <!-- Lottie Animation Data -->
+  <script src="assets/Automotive.js"></script>
+
+  <style>
+    /* Design Tokens & CSS Variables */
+    :root {
+      --color-green: #00bf63;
+      --color-blue: #00a1ff;
+      --color-yellow: #ffde59;
+      --bg-dark: #0a0d0f;
+      --bg-surface: #12161a;
+      --bg-surface-elevated: #1a1f24;
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --text-dark: #0f172a;
+      --border-thin: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(0, 191, 99, 0.3);
+      --font-headings: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --container-width: 1280px;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Global Resets & Layout */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #0f172a;
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-headings);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    button {
+      font-family: var(--font-body);
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background-color: var(--color-green);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-container img {
+      /* logo is already colored correctly in SVG (white Mac, yellow box, blue Hub) */
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .logo-accent {
+      color: var(--color-yellow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--color-yellow);
+    }
+
+    .nav-link.active {
+      border-bottom: 2px solid var(--color-yellow);
+      padding-bottom: 4px;
+    }
+
+    .header-cta {
+      background-color: #ffffff;
+      color: var(--color-green);
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-cta:hover {
+      background-color: var(--color-yellow);
+      color: var(--text-dark);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding-top: 160px;
+      padding-bottom: 80px;
+      background-color: #ffffff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero-headline {
+      font-size: 52px;
+      line-height: 1.15;
+      color: #0f172a;
+    }
+
+    .hero-headline span {
+      color: var(--color-green);
+    }
+
+    .hero-subheadline {
+      font-size: 18px;
+      color: #475569;
+      max-width: 540px;
+      font-weight: 400;
+    }
+
+    .app-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .app-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 8px 18px;
+      color: #ffffff;
+      text-align: left;
+      min-width: 175px;
+      transition: var(--transition-smooth);
+    }
+
+    .app-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .app-btn img {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+
+    .btn-text-small {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      line-height: 1.2;
+    }
+
+    .btn-text-large {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* Hero Right Section - Lottie Container */
+    .hero-media-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Smartphone Mockup */
+    .phone-mockup {
+      width: 290px;
+      height: 580px;
+      background-color: #000;
+      border-radius: 40px;
+      border: 8px solid #2e3438;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+      position: relative;
+      z-index: 5;
+      overflow: hidden;
+    }
+
+    .phone-speaker {
+      width: 60px;
+      height: 4px;
+      background-color: #2e3438;
+      border-radius: 2px;
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .phone-camera {
+      width: 10px;
+      height: 10px;
+      background-color: #1a1a1a;
+      border-radius: 50%;
+      position: absolute;
+      top: 9px;
+      left: calc(50% + 40px);
+      z-index: 10;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background-color: #0f1316;
+      padding: 28px 16px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .phone-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 8px;
+    }
+
+    .phone-location {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-muted);
+    }
+
+    .phone-location i {
+      color: var(--color-green);
+    }
+
+    .phone-promo {
+      background-color: var(--color-blue);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      color: var(--text-dark);
+      font-weight: 700;
+      position: relative;
+    }
+
+    .phone-promo p {
+      font-size: 11px;
+    }
+
+    .phone-categories {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .phone-cat-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .phone-cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .phone-cat-card {
+      background-color: var(--bg-surface);
+      border-radius: 8px;
+      padding: 10px 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border-thin);
+    }
+
+    .phone-cat-card i {
+      color: var(--color-blue);
+    }
+
+    .phone-cat-card p {
+      font-size: 9px;
+      font-weight: 500;
+    }
+
+    .phone-tracker {
+      background-color: var(--bg-surface-elevated);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      border: 1px solid var(--border-accent);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .phone-tracker-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    .phone-tracker-bar {
+      height: 4px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .phone-tracker-fill {
+      width: 70%;
+      height: 100%;
+      background-color: var(--color-green);
+    }
+
+    .phone-mechanic-card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .phone-mech-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .phone-mech-info h5 {
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .phone-mech-info p {
+      font-size: 8px;
+      color: var(--text-muted);
+    }
+
+    /* Trust Banner */
+    .trust-banner {
+      width: 100%;
+      background-color: #f8fafc;
+      border-top: 1px solid rgba(15, 23, 42, 0.06);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      padding: 20px 0;
+      margin-top: 60px;
+      color: #334155;
+    }
+
+    .trust-banner-content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .trust-item.accent-city i {
+      color: var(--color-blue);
+    }
+
+    .trust-item.accent-rating i {
+      color: var(--color-yellow);
+    }
+
+    .trust-item.accent-shield i {
+      color: var(--color-green);
+    }
+
+    /* Problem/Solution Section */
+    .comparison {
+      padding: 100px 0;
+      background-color: #ffffff;
+    }
+
+    .comparison .section-header h2 {
+      color: #0f172a;
+    }
+
+    .comparison .section-header p {
+      color: #475569;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .comparison-card {
+      background-color: #f8fafc;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+    }
+
+    .comparison-card:hover {
+      border-color: var(--color-green);
+      outline: 3px solid var(--color-green);
+      outline-offset: -3px;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 191, 99, 0.15);
+    }
+
+    .comparison-card.old-way {
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .comparison-card.new-way {
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: none;
+    }
+
+    .comparison-card-title {
+      font-size: 24px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--color-green);
+    }
+
+    .old-way .comparison-card-title i {
+      color: #ef4444;
+    }
+
+    .new-way .comparison-card-title i {
+      color: var(--color-green);
+    }
+
+    .comparison-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .comparison-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .comparison-item i {
+      font-size: 20px;
+      margin-top: 2px;
+    }
+
+    .old-way .comparison-item i {
+      color: #ef4444;
+    }
+
+    .new-way .comparison-item i {
+      color: var(--color-green);
+    }
+
+    .comparison-item-text h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .old-way .comparison-item-text h4 {
+      color: #0f172a;
+    }
+
+    .new-way .comparison-item-text h4 {
+      color: #0f172a;
+    }
+
+    .comparison-item-text p {
+      font-size: 14px;
+    }
+
+    .old-way .comparison-item-text p {
+      color: #475569;
+    }
+
+    .new-way .comparison-item-text p {
+      color: #475569;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 100px 0;
+      background-color: #ffffff;
+      position: relative;
+    }
+
+    .how-it-works .section-header h2 {
+      color: var(--color-green);
+    }
+
+    .how-it-works .section-header p {
+      color: #166534;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      position: relative;
+      margin-top: 40px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 50px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background-color: rgba(15, 23, 42, 0.08);
+      z-index: 1;
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      gap: 20px;
+    }
+
+    .step-icon-wrapper {
+      width: 100px;
+      height: 100px;
+      border-radius: var(--radius-lg);
+      background-color: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .timeline-step:hover .step-icon-wrapper {
+      transform: scale(1.05);
+      border-color: var(--color-blue);
+      box-shadow: 0 10px 25px rgba(0, 161, 255, 0.15);
+    }
+
+    .step-icon-wrapper i,
+    .step-icon-wrapper svg {
+      width: 36px;
+      height: 36px;
+      color: var(--color-blue);
+      display: block;
+    }
+
+    .step-badge {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background-color: var(--color-yellow);
+      color: var(--text-dark);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .step-info h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--color-green);
+    }
+
+    .step-info p {
+      font-size: 14px;
+      color: #166534;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* Tabbed Services Section */
+    .services {
+      padding: 100px 0;
+      background-color: #ffffff;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+    }
+
+    .services-header-text h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    .services-header-text p {
+      font-size: 18px;
+      color: #475569;
+    }
+
+    .tab-controls {
+      display: flex;
+      background-color: #f1f5f9;
+      border-radius: var(--radius-md);
+      padding: 6px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .tab-btn {
+      padding: 14px 28px;
+      font-weight: 600;
+      font-size: 15px;
+      color: #64748b;
+      border-radius: var(--radius-sm);
+    }
+
+    .tab-btn.active {
+      background-color: var(--color-green);
+      color: var(--text-dark);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .service-card {
+      background-color: var(--color-green);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .service-card:hover {
+      border-color: var(--color-yellow);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 191, 99, 0.2);
+    }
+
+    .service-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon i,
+    .service-icon svg {
+      font-size: 24px;
+      color: #ffffff;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      color: #ffffff;
+    }
+
+    .service-inclusions {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .service-inclusions li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .service-inclusions li i,
+    .service-inclusions li svg {
+      color: var(--color-yellow);
+      font-size: 16px;
+    }
+
+    .service-cta {
+      margin-top: auto;
+      width: 100%;
+      padding: 12px;
+      background-color: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      font-weight: 700;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .service-card:hover .service-cta {
+      background-color: var(--color-yellow);
+      border-color: var(--color-yellow);
+      color: var(--text-dark);
+    }
+
+    /* Safety & Trust Section */
+    .safety {
+      padding: 100px 0;
+      background-color: #ffffff;
+    }
+
+    .safety-block {
+      background-color: #f8fafc;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: var(--radius-lg);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    }
+
+    .safety-shield-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .safety-shield {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: rgba(0, 191, 99, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      border: 2px solid var(--color-green);
+    }
+
+    .safety-shield i,
+    .safety-shield svg {
+      font-size: 60px;
+      width: 60px;
+      height: 60px;
+      color: var(--color-green);
+    }
+
+    .safety-shield-wrapper h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .safety-shield-wrapper p {
+      font-size: 14px;
+      color: #475569;
+    }
+
+    .safety-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .safety-pillar {
+      display: flex;
+      gap: 20px;
+    }
+
+    .safety-pillar-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .safety-pillar-icon i,
+    .safety-pillar-icon svg {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      color: var(--color-green);
+    }
+
+    .safety-pillar-info h4 {
+      font-size: 18px;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+
+    .safety-pillar-info p {
+      font-size: 14px;
+      color: #475569;
+    }
+
+
+
+    /* Footer CTA Section */
+    .footer-cta {
+      padding: 80px 0;
+      background-color: #ffffff;
+    }
+
+    .cta-box {
+      background-color: #f8fafc;
+      border-radius: var(--radius-lg);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    }
+
+    .cta-box-content {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-box h2 {
+      font-size: 42px;
+      line-height: 1.2;
+      color: #0f172a;
+    }
+
+    .promo-banner {
+      background-color: rgba(255, 222, 89, 0.15);
+      border: 1px solid var(--color-yellow);
+      border-radius: var(--radius-md);
+      padding: 16px 32px;
+      max-width: 600px;
+    }
+
+    .promo-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .promo-code {
+      display: inline-block;
+      background-color: var(--color-yellow);
+      color: var(--text-dark);
+      font-family: var(--font-headings);
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      margin-left: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-green);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 60px 0 30px 0;
+      color: #ffffff;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(2, 0.82fr);
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+
+    footer .logo-container img {
+      /* logo is already colored correctly in SVG (white Mac, yellow box, blue Hub) */
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 320px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    .social-icon:hover {
+      background-color: var(--color-yellow);
+      border-color: var(--color-yellow);
+      color: var(--text-dark);
+    }
+
+    .footer-col h4 {
+      font-size: 16px;
+      margin-bottom: 24px;
+      color: #ffffff;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-yellow);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Marquee Banner Style */
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      background-color: var(--color-yellow);
+      color: #0f172a;
+      white-space: nowrap;
+      padding: 14px 0;
+      border-top: 1px solid rgba(15, 23, 42, 0.05);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02), inset 0 -2px 4px rgba(0,0,0,0.02);
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: scroll-marquee 25s linear infinite;
+      gap: 50px;
+    }
+
+    .marquee-text {
+      font-family: var(--font-headings);
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .marquee-text span {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .marquee-text span::after {
+      content: '•';
+      color: var(--color-blue);
+      font-size: 18px;
+    }
+
+    @keyframes scroll-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+      }
+
+      .hero-content {
+        align-items: center;
+      }
+
+      .hero-subheadline {
+        margin: 0 auto;
+      }
+
+      .app-buttons {
+        justify-content: center;
+      }
+
+      .tab-content.active {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .safety-block {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .header-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-headline {
+        font-size: 38px;
+      }
+
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .timeline-line {
+        display: none;
+      }
+
+      .tab-content.active {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .services-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .cta-box h2 {
+        font-size: 32px;
+      }
+    }
+
+    /* Giant footer branding */
+    .footer-giant-text {
+      width: 100%;
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .footer-giant-text span {
+      font-family: var(--font-headings);
+      font-size: clamp(50px, 14.5vw, 175px);
+      font-weight: 900;
+      color: var(--color-yellow);
+      letter-spacing: 0.02em;
+      line-height: 0.8;
+      display: inline-block;
+      transition: var(--transition-smooth);
+      cursor: default;
+    }
+
+    .footer-giant-text span:hover {
+      color: transparent;
+      -webkit-text-stroke: 2px #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo-container" id="logo">
+        <img src="assets/logo.png" alt="MecHub Logo" style="height: 38px; width: auto; display: block;" />
+      </a>
+      <nav class="nav-links">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#how-it-works" class="nav-link">How it Works</a>
+        <a href="#safety" class="nav-link">Safety Guarantee</a>
+      </nav>
+      <button class="header-cta" onclick="scrollToCta()">Download App</button>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-headline">Expert Car & Bike Servicing, <span>Right at Your Doorstep.</span></h1>
+          <p class="hero-subheadline">Skip the waiting room. Certified mechanics equipped with advanced tools arrive at your home or office. Professional-grade maintenance, reimagined.</p>
+          <div class="app-buttons">
+            <a href="#" class="app-btn">
+              <img src="assets/app-store-svgrepo-com.svg" alt="App Store" />
+              <div>
+                <p class="btn-text-small">Download on the</p>
+                <p class="btn-text-large">App Store</p>
+              </div>
+            </a>
+            <a href="#" class="app-btn">
+              <img src="assets/google-play-svgrepo-com.svg" alt="Google Play" />
+              <div>
+                <p class="btn-text-small">Get it on</p>
+                <p class="btn-text-large">Google Play</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="hero-media-wrapper">
+          <div id="lottie-container" style="width: 100%; max-width: 550px; height: 420px; margin: 0 auto; overflow: hidden;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee Banner -->
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="marquee-text">
+          <span>Currently operating in Dibrugarh. More areas to cover</span>
+          <span>Currently operating in Dibrugarh. More areas to cover</span>
+          <span>Currently operating in Dibrugarh. More areas to cover</span>
+          <span>Currently operating in Dibrugarh. More areas to cover</span>
+        </div>
+        <div class="marquee-text" aria-hidden="true">
+          <span>Currently operating in Dibrugarh. More areas to cover</span>
+          <span>Currently operating in Dibrugarh. More areas to cover</span>
+          <span>Currently operating in Dibrugarh. More areas to cover</span>
+          <span>Currently operating in Dibrugarh. More areas to cover</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Matrix Section -->
+    <section class="comparison">
+      <div class="container">
+        <div class="section-header">
+          <h2>The Traditional Way vs. MecHub</h2>
+          <p>We engineered a modern digital experience designed to eliminate the anxiety of traditional garage runs.</p>
+        </div>
+        <div class="comparison-grid">
+          <!-- Traditional way -->
+          <a href="#footer-cta" class="comparison-card old-way">
+            <h3 class="comparison-card-title">
+              <i data-lucide="alert-triangle"></i> Traditional Garage
+            </h3>
+            <ul class="comparison-list">
+              <li class="comparison-item">
+                <i data-lucide="x"></i>
+                <div class="comparison-item-text">
+                  <h4>Wasting Weekends</h4>
+                  <p>Spending your valuable Saturdays driving to the workshop and waiting for hours in uncomfortable lobbies.</p>
+                </div>
+              </li>
+              <li class="comparison-item">
+                <i data-lucide="x"></i>
+                <div class="comparison-item-text">
+                  <h4>Hidden Billing Surprise</h4>
+                  <p>Unplanned charges and mysterious add-ons added to your invoice after work is already completed.</p>
+                </div>
+              </li>
+              <li class="comparison-item">
+                <i data-lucide="x"></i>
+                <div class="comparison-item-text">
+                  <h4>Zero Quality Transparency</h4>
+                  <p>No way to verify if original spares were used, or if the recommended repairs were actually necessary.</p>
+                </div>
+              </li>
+            </ul>
+          </a>
+          <!-- MecHub App Way -->
+          <a href="#footer-cta" class="comparison-card new-way">
+            <h3 class="comparison-card-title">
+              <i data-lucide="smartphone"></i> The MecHub App
+            </h3>
+            <ul class="comparison-list">
+              <li class="comparison-item">
+                <i data-lucide="check-circle-2"></i>
+                <div class="comparison-item-text">
+                  <h4>Zero Commute & Waiting</h4>
+                  <p>Certified technicians arrive directly at your location. Work is completed while you focus on what matters.</p>
+                </div>
+              </li>
+              <li class="comparison-item">
+                <i data-lucide="check-circle-2"></i>
+                <div class="comparison-item-text">
+                  <h4>Upfront Fixed Pricing</h4>
+                  <p>All-inclusive prices are computed instantly on-app before you request your booking. No surprise bills.</p>
+                </div>
+              </li>
+              <li class="comparison-item">
+                <i data-lucide="check-circle-2"></i>
+                <div class="comparison-item-text">
+                  <h4>Real-Time Live Tracking</h4>
+                  <p>Watch step-by-step progress, view high-definition service images, and trace live milestones in the app.</p>
+                </div>
+              </li>
+            </ul>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2>Three Steps to Effortless Care</h2>
+          <p>Scheduling premium doorstep maintenance is simpler than booking a ride.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-line"></div>
+          <!-- Step 1 -->
+          <div class="timeline-step">
+            <div class="step-icon-wrapper">
+              <i data-lucide="download"></i>
+              <span class="step-badge">01</span>
+            </div>
+            <div class="step-info">
+              <h3>Download &amp; Select</h3>
+              <p>Get the app, add your vehicle profile, and choose from our curated service menu.</p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="timeline-step">
+            <div class="step-icon-wrapper">
+              <i data-lucide="calendar"></i>
+              <span class="step-badge">02</span>
+            </div>
+            <div class="step-info">
+              <h3>Pick Your Slot</h3>
+              <p>Select a time and date that fit your schedule. We assign a verified master tech.</p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="timeline-step">
+            <div class="step-icon-wrapper">
+              <i data-lucide="credit-card"></i>
+              <span class="step-badge">03</span>
+            </div>
+            <div class="step-info">
+              <h3>Relax &amp; Pay Seamlessly</h3>
+              <p>Track live mechanics. Pay safely online only after your service is fully completed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services-header">
+          <div class="services-header-text">
+            <h2>Our Service Menu</h2>
+            <p>High-fidelity, dealer-spec vehicle maintenance packages at your convenience.</p>
+          </div>
+          <div class="tab-controls">
+            <button class="tab-btn active" onclick="switchTab('cars')">🚗 Car Care Services</button>
+            <button class="tab-btn" onclick="switchTab('bikes')">🏍️ Bike &amp; Scooter Care</button>
+          </div>
+        </div>
+
+        <!-- Car Services Tab Content -->
+        <div id="cars-tab" class="tab-content active">
+          <!-- Card 1 -->
+          <div class="service-card">
+            <div class="service-card-header">
+              <div class="service-icon">
+                <i data-lucide="wrench"></i>
+              </div>
+              <h3>Periodic Maintenance</h3>
+            </div>
+            <ul class="service-inclusions">
+              <li><i data-lucide="check"></i> OEM Engine Oil Replacement</li>
+              <li><i data-lucide="check"></i> Oil Filter &amp; Air Filter Service</li>
+              <li><i data-lucide="check"></i> Comprehensive 40-Point Diagnostic Check</li>
+              <li><i data-lucide="check"></i> Coolant and Fluid Top-up</li>
+            </ul>
+            <button class="service-cta" onclick="scrollToCta()">Book via App</button>
+          </div>
+          <!-- Card 2 -->
+          <div class="service-card">
+            <div class="service-card-header">
+              <div class="service-icon">
+                <i data-lucide="shield-alert"></i>
+              </div>
+              <h3>Brakes &amp; Suspension</h3>
+            </div>
+            <ul class="service-inclusions">
+              <li><i data-lucide="check"></i> Brake Pad &amp; Shoe Replacement</li>
+              <li><i data-lucide="check"></i> Brake Caliper &amp; Disc Servicing</li>
+              <li><i data-lucide="check"></i> Suspension Bush &amp; Damper Check</li>
+              <li><i data-lucide="check"></i> Steering Rack Health Review</li>
+            </ul>
+            <button class="service-cta" onclick="scrollToCta()">Book via App</button>
+          </div>
+          <!-- Card 3 -->
+          <div class="service-card">
+            <div class="service-card-header">
+              <div class="service-icon">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <h3>Eco Spa &amp; Wash</h3>
+            </div>
+            <ul class="service-inclusions">
+              <li><i data-lucide="check"></i> Waterless Eco Exterior Polish</li>
+              <li><i data-lucide="check"></i> Deep Interior Vacuuming &amp; Detail</li>
+              <li><i data-lucide="check"></i> AC Vent Ozone Sanitization</li>
+              <li><i data-lucide="check"></i> Dashboard Dress &amp; Tyre Polish</li>
+            </ul>
+            <button class="service-cta" onclick="scrollToCta()">Book via App</button>
+          </div>
+        </div>
+
+        <!-- Bike Services Tab Content -->
+        <div id="bikes-tab" class="tab-content">
+          <!-- Card 1 -->
+          <div class="service-card">
+            <div class="service-card-header">
+              <div class="service-icon">
+                <i data-lucide="sliders"></i>
+              </div>
+              <h3>General Servicing</h3>
+            </div>
+            <ul class="service-inclusions">
+              <li><i data-lucide="check"></i> Premium Engine Oil Change</li>
+              <li><i data-lucide="check"></i> Spark Plug Clean &amp; Gap Adjustment</li>
+              <li><i data-lucide="check"></i> Chain Slack Adjustment &amp; Lube</li>
+              <li><i data-lucide="check"></i> Brake Adjust &amp; Electrical Inspection</li>
+            </ul>
+            <button class="service-cta" onclick="scrollToCta()">Book via App</button>
+          </div>
+          <!-- Card 2 -->
+          <div class="service-card">
+            <div class="service-card-header">
+              <div class="service-icon">
+                <i data-lucide="gauge"></i>
+              </div>
+              <h3>Engine Tuning</h3>
+            </div>
+            <ul class="service-inclusions">
+              <li><i data-lucide="check"></i> Carburetor Clean &amp; Jet Setting</li>
+              <li><i data-lucide="check"></i> Throttle Body &amp; Injector Wash</li>
+              <li><i data-lucide="check"></i> Valve Clearance (Tappet) Adjustment</li>
+              <li><i data-lucide="check"></i> Live Fuel Efficiency Tuning</li>
+            </ul>
+            <button class="service-cta" onclick="scrollToCta()">Book via App</button>
+          </div>
+          <!-- Card 3 -->
+          <div class="service-card">
+            <div class="service-card-header">
+              <div class="service-icon">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <h3>Paint Polishing</h3>
+            </div>
+            <ul class="service-inclusions">
+              <li><i data-lucide="check"></i> Scratch Removal Compounding</li>
+              <li><i data-lucide="check"></i> Machine Gloss Glaze Application</li>
+              <li><i data-lucide="check"></i> Premium Carnauba Wax Coating</li>
+              <li><i data-lucide="check"></i> Matte Paint Spec Treatment</li>
+            </ul>
+            <button class="service-cta" onclick="scrollToCta()">Book via App</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Trust & Safety Section -->
+    <section class="safety" id="safety">
+      <div class="container">
+        <div class="safety-block">
+          <div class="safety-shield-wrapper">
+            <div class="safety-shield">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3>The Doorstep Safety Guarantee</h3>
+            <p>Our operational standard is engineered to ensure absolute peace of mind for every customer.</p>
+          </div>
+          <div class="safety-pillars">
+            <!-- Pillar 1 -->
+            <div class="safety-pillar">
+              <div class="safety-pillar-icon">
+                <i data-lucide="award"></i>
+              </div>
+              <div class="safety-pillar-info">
+                <h4>Certified Experts Only</h4>
+                <p>Every mechanic is background-verified, undergoes extensive factory testing, and has a minimum of 3 years of workshop experience.</p>
+              </div>
+            </div>
+            <!-- Pillar 2 -->
+            <div class="safety-pillar">
+              <div class="safety-pillar-icon">
+                <i data-lucide="package-check"></i>
+              </div>
+              <div class="safety-pillar-info">
+                <h4>100% Genuine Spares</h4>
+                <p>We source spare parts directly from OEM/OES manufacturers. Every part we replace carries a standard 6-month warranty.</p>
+              </div>
+            </div>
+            <!-- Pillar 3 -->
+            <div class="safety-pillar">
+              <div class="safety-pillar-icon">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <div class="safety-pillar-info">
+                <h4>No Spills, No Mess</h4>
+                <p>Technicians use specialized floor guards and eco-friendly collection mats to ensure your driveway or office garage remains spotless.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Footer CTA Section -->
+    <section class="footer-cta" id="footer-cta">
+      <div class="container">
+        <div class="cta-box">
+          <div class="cta-box-content">
+            <h2>Ready to experience the future of vehicle maintenance?</h2>
+            
+            <div class="promo-banner">
+              <p class="promo-text">
+                Download the app today and get 15% OFF your first doorstep service. 
+                <span class="promo-code">FIRST15</span>
+              </p>
+            </div>
+
+            <div class="app-buttons">
+              <a href="#" class="app-btn">
+                <img src="assets/app-store-svgrepo-com.svg" alt="App Store" />
+                <div>
+                  <p class="btn-text-small">Download on the</p>
+                  <p class="btn-text-large">App Store</p>
+                </div>
+              </a>
+              <a href="#" class="app-btn">
+                <img src="assets/google-play-svgrepo-com.svg" alt="Google Play" />
+                <div>
+                  <p class="btn-text-small">Get it on</p>
+                  <p class="btn-text-large">Google Play</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo-container">
+            <img src="assets/logo.png" alt="MecHub Logo" style="height: 38px; width: auto; display: block;" />
+          </a>
+          <p>Premium, certified on-demand vehicle servicing and diagnostic solutions delivered right to your home or office.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width: 18px; height: 18px;"></i></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><i data-lucide="twitter" style="width: 18px; height: 18px;"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width: 18px; height: 18px;"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Car Maintenance</a></li>
+            <li><a href="#services">Bike Servicing</a></li>
+            <li><a href="#services">Diagnostics Scan</a></li>
+            <li><a href="#services">Eco Detailing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 MecHub Technologies Inc. All rights reserved.</p>
+        <p>Created for professional diagnostics and on-demand maintenance.</p>
+      </div>
+      <div class="footer-giant-text">
+        <span>MecHub</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      // Deactivate all tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+
+      // Activate clicked tab
+      if (tabId === 'cars') {
+        event.currentTarget.classList.add('active');
+        document.getElementById('cars-tab').classList.add('active');
+      } else if (tabId === 'bikes') {
+        event.currentTarget.classList.add('active');
+        document.getElementById('bikes-tab').classList.add('active');
+      }
+    }
+
+    // Scroll to Download App CTA
+    function scrollToCta() {
+      document.getElementById('footer-cta').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Mobile Hamburger Menu logic
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const isHidden = window.getComputedStyle(navLinks).display === 'none';
+        if (isHidden) {
+          navLinks.style.display = 'flex';
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '80px';
+          navLinks.style.left = '0';
+          navLinks.style.width = '100%';
+          navLinks.style.backgroundColor = 'var(--color-green)';
+          navLinks.style.padding = '20px';
+          navLinks.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        } else {
+          navLinks.style.display = '';
+        }
+      });
+    }
+
+    // Initialize Lottie Animation
+    lottie.loadAnimation({
+      container: document.getElementById('lottie-container'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: automotiveAnimation
+    });
+  </script>
+</body>
+</html>
